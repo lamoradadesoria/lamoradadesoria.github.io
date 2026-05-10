@@ -1,682 +1,254 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" name="description" content="Casa rural La Morada, Torraño, Soria.">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Morada | Casa Rural en Soria</title>
+    <meta name="description" content="Casa rural La Morada, Torraño, Soria. Un sitio ideal para desconectar.">
     <link rel="icon" href="./img/logo.jpg">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="./js/ie-emulation-modes-warning.js"></script>
-    <script src="./js/jquery.min.js"></script>
-    <script src="./js/bootstrap.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Open Sans', sans-serif; color: #333; scroll-behavior: smooth; line-height: 1.6; }
+        h1, h2, h3, .navbar-brand { font-family: 'Montserrat', sans-serif; }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./img/Fachada\ dia\ (3).jpg');
+            background-size: cover; background-position: center; height: 80vh;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+        }
 
-    <title>La Morada</title>
+        .section-padding { padding: 80px 0; }
+        
+        /* Galería Mejorada */
+        .gallery-img {
+            width: 100%; height: 200px; object-fit: cover; border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;
+        }
+        .gallery-img:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
-    <!-- Bootstrap core CSS -->
-    <link href="./css/bootstrap.css" rel="stylesheet">
+        /* Tarjetas de Turismo */
+        .card-turismo {
+            border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s; height: 100%; border-radius: 12px; overflow: hidden;
+        }
+        .card-turismo:hover { transform: translateY(-10px); }
+        .card-turismo img { height: 200px; object-fit: cover; }
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        /* Mascotas */
+        .mascotas-box {
+            background: #fff; border-radius: 15px; border-left: 8px solid #198754;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); padding: 30px;
+        }
+        
+        /* Sección Contacto (Diseño Clásico "Hablemos") */
+        .contacto-dark { background: #212529; color: white; }
+        .social-icons img { width: 40px; margin-right: 15px; filter: invert(1); opacity: 0.8; transition: 0.3s; }
+        .social-icons img:hover { opacity: 1; transform: translateY(-3px); }
+        
+        .map-container {
+            position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .map-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0; }
 
-    <!-- Custom styles for this template -->
-    <link href="./css/carousel.css" rel="stylesheet">
+        .btn-success { padding: 12px 30px; font-weight: 600; border-radius: 30px; }
+    </style>
+</head>
+<body>
 
-  </head>
-
-<!-- INICIO BARRA DE ARRIBA
-================================================== -->
-  <body>
-    <div class="navbar-wrapper">
-      <div class="container">
-
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">La Morada</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">LA MORADA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#alojamiento">La Casa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#mascotas">Mascotas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#turismo">Entorno</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#precios">Precios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                <li><a href="#Alojamiento">Alojamiento</a></li>
-                <li><a href="#Galeria">Galería</a></li>
-                <li><a href="#Mascotas">Mascotas</a></li>
-                <li><a href="#Turismo">Torraño y su entorno</a></li>
-                <li><a href="#Precios">Precios</a></li>
-                <li><a href="#Llegar">Cómo llegar</a></li>
-                <li><a href="#Contacto">Contacto</a></li>
-                <li><a href="#Contacto">Aviso legal</a></li>
-                <li><a href="#Contacto">COVID-19</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-
-      </div>
-    </div>
-<!-- FINAL BARRA DE ARRIBA
-
-================================================== -->
-
-    <!-- INICIO IMAGENES QUE SE MUEVEN
-    ================================================== -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <img src="./img/Fachada dia (3).jpg">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Regálate un descanso.</h1>
-              <p>Un sitio ideal para desconectar de la rutina con todas las comodidades.</p>
-              <p><a class="btn btn-lg btn-success" href="#Galeria" role="button">Ver galería</a></p>
-            </div>
-          </div>
         </div>
-        <div class="item">
-          <img src="./img/hab41.jpg">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Turismo rural para todos.</h1>
-              <p>Disfruta de una gran variedad de actividades disponibles en la zona.</p>
-              <p><a class="btn btn-lg btn-success" href="#Turismo" role="button">Más información</a></p>
-            </div>
-          </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container">
+            <h1 class="display-3 fw-bold">Regálate un descanso</h1>
+            <p class="lead fs-4">Un sitio ideal para desconectar de la rutina con todas las comodidades.</p>
+            <a href="#contacto" class="btn btn-success btn-lg mt-3 shadow">Solicitar Información</a>
         </div>
-        <div class="item">
-          <img src="./img/salon3.jpg">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>¡Encantados de atenderte!</h1>
-              <p>Para solicitar más información y reservar, ponte en contacto con nosotros.</p>
-              <p><a class="btn btn-lg btn-success" href="#Contacto" role="button">Contacto</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div><!-- /.carousel -->
+    </header>
 
-    <!-- FIN IMAGENES QUE SE MUEVEN
-    ================================================== -->
-
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
-    <div class="container marketing">
-
-      <!-- START THE FEATURETTES -->
-
-      <hr class="featurette-divider" id="Alojamiento">
-
-      <div class="row featurette">
-        <div class="col-md-8">
-          <h2 class="featurette-heading">Alojamiento.</h2>
-          <p class="lead">Antigua casa de piedra con más de 100 años de historia. Totalmente rehabilitada, que combina materiales originales, tradicionales y reciclados. Siendo respetuosa y en total armonía con la arquitectura tradicional del entorno. Ubicada en Torraño (San Esteban de Gormaz), un pequeño pueblo de encanto típicamente soriano.</p>
-          <p class="lead">La madera en vigas, techos y muebles artesanos, le dan un ambiente rústico y acogedor. Cuenta con una capacidad de 8 a 10 personas, en alquiler completo. Equipada con todo lo necesario para que la estancia sea "como estar en casa".</p>
-          <p class="lead">La planta baja dispone de todas las zonas comunes, salón-comedor con chimenea; amplia cocina con zona para comer; baño completo con ducha; zona de lavandería (lavadora, secadora y tendedero) y un acogedor patio donde disfrutar de la barbacoa.</p>
-          <p class="lead">En la planta superior, se encuentran  cuatro confortables habitaciones dobles(dos con cama de matrimonio de 1,50cm, una con cama de 1,30cm y una con dos camas de 0,90cm) con posibilidad de cama supletoria y/o cuna de viaje. Dispone de dos cuartos de baño con ducha.</p>
-          <p class="lead">La vivienda está dotada con agua corriente potable y calefacción. Se admiten animales.(Ver "<a href="#Mascotas">Mascotas</a>").</p>
-        </div>
-        <div class="col-md-4">
-          <img class="featurette-image img-responsive" src="./img/Fachada noche (1).jpg">
-        </div>
-        <div class="col-md-4">
-          <img class="featurette-image img-responsive" src="./img/Salon dia (6).JPG">
-        </div>
-        <div class="col-md-4">
-          <img class="featurette-image img-responsive" src="./img/Morada noche (2).jpg">
-        </div>
-      </div>
-
-      <hr class="featurette-divider" id="Galeria">
-
-      <div class="row featurette">
-        <div class="col-md-12">
-
-          <h2 class="featurette-heading">Galería.</h2>
-
-          <!--galeria-->
-
-          <div class="container">
-            <ul class="row">
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Fachada dia (3).jpg"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/fachada2.jpg"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Entrada dia (4).JPG"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Salon dia (1).JPG"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Salon dia (4).JPG"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/salon3.jpg"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/patio3.jpg"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/patio1.jpg"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Cocina dia (2).JPG"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Cocina dia (4).JPG"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Baño grande (2).JPG"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Escalera dia (2).JPG"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Pasillo dia (2).JPG"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Morada dia (1).JPG"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Morada dia (4).JPG"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Baño blanco.JPG"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Lunas noche.jpg"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Lunas dia (3).JPG"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Marron dia (4).JPG"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Marron noche (1).jpg"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Pasillo dia (3).JPG"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Baño azul (1).JPG"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Azul dia (1).JPG"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Azul dia (3).JPG"/>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm3 col-xs-4">
-                <img class="img-responsive" src="./img/Fachada noche (2).jpg"/>
-              </li>
-               </ul>
-          </div>
-
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">         
-                <div class="modal-body">                
+    <section id="alojamiento" class="container section-padding">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <h2 class="mb-4 display-5 fw-bold text-dark">Alojamiento con historia</h2>
+                <p class="lead text-muted mb-4">Antigua casa de piedra con más de 100 años, totalmente rehabilitada en armonía con la arquitectura tradicional de Torraño.</p>
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <h5 class="fw-bold text-success">🏠 Capacidad</h5>
+                        <p>8 a 10 personas (alquiler completo).</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h5 class="fw-bold text-success">🛏️ Habitaciones</h5>
+                        <p>4 habitaciones dobles, salón con chimenea y patio con barbacoa.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h5 class="fw-bold text-success">📍 Ubicación</h5>
+                        <p>Torraño (Soria), un pequeño pueblo con encanto típicamente soriano.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h5 class="fw-bold text-success">✨ Comodidad</h5>
+                        <p>Equipada con todo lo necesario: "Como estar en casa".</p>
+                    </div>
                 </div>
-              </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-          </div><!-- /.modal -->
-
-        </div>
-
-      </div>
-      <hr class="featurette-divider" id="Mascotas">
-
-      <div class="row featurette">
-        <div class="col-md-8">
-          <h2 class="featurette-heading">Mascotas.</h2>
-          <p class="lead">- Deben estar debidamente identificados: cartilla sanitaria, chip identificativo, ...</p>
-          <p class="lead">- Los propietarios se harán responsables en todo momento de sus mascotas.</p>
-          <p class="lead">- Por razones de higiene, rogamos eviten que las mascotas se suban al mobiliario. Se procurará que los animales no duerman, ni entren en las habitaciones.</p>
-          
-          </div>
-        <div class="col-md-4">
-          <img class="featurette-image img-responsive" src="./img/Animales.jpg">
-        </div>
-        <div class="col-md-12">
-          <p class="lead">- Recomendamos que traigan una manta o colchoneta para el suelo; en la casa podemos proporcionarles sólo una. Por favor respentes las alfombras.</p>
-          <p class="lead">- Si necesitan una toalla para el aseo de su animal, pídanosla. No usen las toallas del baño.</p>
-          <p class="lead">- Siempre se dará de comer y de beber a los animales en los baños o en el patio. Si no han traído recipientes para ellos, también podemos proprcionárselos.</p>
-          <p class="lead">- Rogamos que no dejen solas a sus mascotas en la casa cuando se ausenten.</p>
-          <p class="lead">- Recuerde que su mascota es un ser vivo, que debe ser tratado con el cariño, el respeto y la dignidad que merece.</p>
-        </div>
-      </div>
-      
-
-      <hr class="featurette-divider" id="Turismo">
-
-      <div class="row featurette">
-        <div class="col-md-8">
-          <h2 class="featurette-heading">Torraño y su entorno.</h2>
-          <p class="lead">Torraño es un pueblecito de la provincia de Soria, que pertenece al municipio de San Esteban de Gormaz.(Castilla y León)</p>
-          <p class="lead">El pueblo se extiende en torno a la pequeña iglesia parroquial de Santa María Magdalena en la que hay documentado un cáliz ejecutado por un platero de Sigüenza para esta parroquia, en la segunda mitad del siglo XVI - principios del XVII.</p>
-          <p class="lead">Celebra sus fiestas el 15 de Agosto, en honor a la virgen María Magdalena.</p>
-          </div>
-          <div class="col-md-4">
-          <img class="featurette-image img-responsive" src="./img/vistas.jpg">
-          </div>
-          <div class="col-md-12">
-          <p class="lead"> En las cercanías del río Pedro se encuentra un molino de agua, abandonado, y la ermita de Santa Cecilia, abandonada también. En el mismo lugar el río se encajona entre acantilados poblados por buitres leonados y alimoches.</p>
-          <p class="lead">Tras la desaparición de Santuy, su término fue dividido entre los correspondientes a las localidades limítrofes de Torraño, Fuentecambrón y Piquera de San Esteban. En 1789, ordenado por el Conde de Floridablanca, figuraba como lugar del partido de Ayllón, en la intendencia de Segovia, con jurisdicción de señorio y bajo la autoridad de alcalde pedáneo, nombrado por el Marqués de Villena. Hasta 1833 perteneció a la provincia de Segovia.</p>
-          <p class="lead">A la caída del Antiguo Régimen la localidad se constituye en municipio constitucional en la región de Castilla la Vieja, en 1842 </p>
-          <p class="lead">A mediados del siglo XIX este municipio desaparece porque se integra en el municipio de Torremocha de Ayllón.</p>
-          <p class="lead">Pertenece al municipio de San Esteban de Gormaz desde el año 1972, cuando se unió a él junto con Torremocha.</p>
-          </div>
-          <div class="col-md-12">
-          <img class="featurette-image img-responsive" src="./img/vistas.jpg">
-          </div>
-          
-          <div class="col-md-8">
-          <h2 class="featurette-heading">Ligos</h2>
-          <p class="lead">Es una pedanía de Montejo de Tiermes, de la provincia de Soria.</p>
-          <p class="lead">Ubicado cerca de las sierras de Ayllón y de Pela. Hay un asentamiento celtibérico, en la zona conocida como La Pedriza. Dicho asentamiento se encuadra dentro de la cultura de los castros, con un recinto amurallado, aunque actualmente se encuentra en muy mal estado de conservación. Cuenta en su patrimonio con la Iglesia de San Juan Bautista, declarada Bien Cultural.</p>
-          <p class="lead">Por otra parte, también hay restos de pinturas rupestres. Son pinturas esquemáticas, localizadas en los Riscos del Hoyo.</p>
-          </div>
-          <div class="col-md-4">
-          <img class="featurette-image img-responsive" src="./img/Ligos.JPG">
-          </div>
-          
-          <div class="col-md-8">
-          <h2 class="featurette-heading">Ayllón</h2>
-          <p class="lead">Municipio y villa de la provincia de Segovia</p>
-          <p class="lead">Tiene bonitos espacios naturales a pocos km, como la Sierra de Ayllón, el Parque Natural de la Tejera Negra, además se puede visitar el hayedo de Montejo. La Martina, en lo alto de la villa. Y el Yacimiento de La Cueva de la Peña, en la zona de  Estebanvela.</p>
-          <p class="lead">El conjunto histórico de la Villa de Ayllón, está considerado como Bien de Interés Cultural (Patrimonio Historico de España), por tratase de un enclave donde se unen la naturaleza y el arte con monumentos civiles, iglesias y palacios.</p>
-          </div>
-          <div class="col-md-4">
-          <img class="featurette-image img-responsive" src="./img/Ayllón.JPG">
-          </div>
-
-          <div class="col-md-12">
-          <p class="lead">A lo largo del año se celebran varias fiestas de interés cultural, en las que se honra a su patrón San Miguel y el último fin de semana de Julio, el "Ayllón Medieval", con un mercado.</p>
-          </div>
-          
-          <div class="col-md-8">
-          <h2 class="featurette-heading">San Esteban de Gormáz</h2>
-          <p class="lead">Es una localidad y municipio de la provincia de Soria</p>
-          <p class="lead">El pueblo está declarado Conjunto Histórico-Artístico, por su destacanda riqueza arquitectónica. Posee dos iglesias románicas, ambas dotadas de magníficas galerías porticadas, La Iglesia de San Miguel y la Iglesia de la Virgen del Rivero. Cuenta con un Parque Temático del Románico, el Ecomuseo "Molino de los ojos", un Castillo medieval
-	  y un Puente romano.</p>
-		  <p class="lead">Desde el año 2000 se celebra cada tercer fin de semana del mes de agosto el Mercado Medieval. Un acontecimiento que tiene el éxito asegurado gracias a la estrecha participación de todos sus vecinos.</p>
-          </div>
-          <div class="col-md-4">
-          <img class="featurette-image img-responsive" src="./img/IglesiaDeNuestraSeñoraDelRiver-SEdG.jpg">
-          </div>
-          <div class="col-md-12">
-          <p class="lead">La localidad está situada en la Ruta de la Lana y en el Camino del Cid, ruta del destierro de El Cid, en la orilla del Río Duero.</p>
-          <p class="lead">Es el inicio de "La ruta del Vino", que comienza en esta localidad y recorre seis localidades en sus 33 km de itinerario. La ruta se caracteriza por recorrer poblaciones con un gran número de bodegas y lagares (Soto de San Esteban, Aldea de San Esteban, Peñalba de San Esteban, Piquera de San Esteban y Atauta).</p>
-          </div>
-          
-          <div class="col-md-8">
-          <h2 class="featurette-heading">Maderuelo</h2>
-          <p class="lead">Es un municipio y villa monumental que se encuentra en la provincia de Segovia.</p>
-          <p class="lead">El conjunto histórico de la Villa de Maderuelo, está considerado como Bien de Interés Cultural con categoría de Conjunto Histórico.</p>
-          <p class="lead">En su término municipal se encuentra el embalse de Linares y las Hoces del Río Riaza, donde podemos encontrarnos con algunos de los animales que residen en sus alrededores como el buitre, el conejo, el zorro, el escasísimo alimoche, etc. Cuenta con un gran patrimonio arquitectónico dividido en dos zonas bien diferenciadas: Intramuros, con la puerta principal de entrada a la villa. La iglesia de San Miguel. La iglesia de Santa María. Las ruinas del castillo, Bien de Interés Cultural. Las murallas. La torre medieval. Extramuros: Vista de la ermita de la Vera Cruz. El antiguo puente medieval. La ermita de la Vera Cruz, Bien de Interés Cultural.</p>
-          </div>
-          <div class="col-md-4">
-          <img class="featurette-image img-responsive" src="./img/Puerta de la villa Maderuelo.jpg">
-          </div>
-          <div class="col-md-12">
-          <p class="lead">Cuenta con diferentes fiestas durante el año: Las patronales, ee celebran el último domingo de septiembre, en honor a Nuestra Señora de Castroboda, su patrona.Santa Águeda, el fin de semana próximo al 5 de febrero, las mujeres celebran antiguas tradiciones. Y la Fiesta medieval, que se celebra el último fin de semana de agosto.</p>
-          </div>
-          
-          <div class="col-md-12">
-          <h2 class="featurette-heading">Montejo de Tiermes.</h2>
-          <p class="lead">Es una localidad y municipio de la provincia de Soria</p>
-          <p class="lead">En su término municipal hay varios Bienes de Interés Cultural. Ermita Románica de Nuestra Señora de Tiermes y el Yacimiento arqueológico de Tiermes. En su término podemos ver el Encinares de Tiermes, Lugar de Interés Comunitario y la Sierra de Ayllón, tambien Lugar de Interés Comunitario.</p>
-          </div>
-
-          <div class="col-md-8">
-          <h2 class="featurette-heading">Burgo de Osma.</h2>
-          <p class="lead">Es una localidad y municipio de la provincia de Soria</p>
-          <p class="lead">Está declarada Conjunto Histórico, por su destacanda riqueza arquitectónica. Cuenta con La Catedral de Santa María de la Asunción. El Antiguo Hospital de San Agustín. La Plaza Mayor. La Calle Mayor y las calles aledañas. El Palacio Episcopal. Las Murallas. La Universidad de Santa Catalina. El Convento del Carmen. El Seminario de Santo Domingo de Guzmán. El Hospicio. La Iglesia de Santa Cristina de Osma. El Castillo de Osma. Las Atalayas y el Camino del Cid. El Burgo de Osma forma parte de esta ruta turístico-cultural. En concreto del tramo denominado El Destierro.</p>
-          </div>
-		  <div class="col-md-4">
-          <img class="featurette-image img-responsive" src="./img/Catedral del Burgo de Osma.jpg">
-          </div>
-          <div class="col-md-12">
-          <p class="lead">Desde el año 2000 se celebra cada tercer fin de semana del mes de agosto el Mercado Medieval. Un acontecimiento que tiene el éxito asegurado gracias a la estrecha participación de todos sus vecinos.</p>
-          <p class="lead">La localidad está situada en la Ruta de la Lana y en el Camino del Cid, ruta del destierro de El Cid, en la orilla del Río Duero.</p>
-          </div>
-          
-          <div class="col-md-8">
-          <h2 class="featurette-heading">Gormaz.</h2>
-          <p class="lead">Es una localidad y municipio de la provincia de Soria.</p>
-          <p class="lead">Cuenta con el Castillo de Gormaz. Fue declarado Bien de Interés Cultural en la categoría de Monumento. Y la Ermita de San Miguel. Que fue declarada Bien de Interés Cultural en la categoría de Monumento. Hasta hace muy poco ésta se utilizaba para guardar el ganado sin saber que tras sus muros se escondían excepcionales pinturas.</p>
-          </div>
-          <div class="col-md-4">
-          <img class="featurette-image img-responsive" src="./img/Castillo de Gormaz.jpg">
-          </div>
-          <div class="col-md-8">
-          <h2 class="featurette-heading">Ucero.</h2>
-          <p class="lead">Es una villa y municipio de la provincia de Soria</p>
-          <p class="lead">Debe su notoriedad esta localidad al Castillo medieval de Ucero a cuya sombra se asienta, y hoy, sobre todo, al hecho de ser la puerta natural de acceso al Parque Natural del Cañón del Río Lobos.</p>
-		  <p class="lead">Cuenta con lugares de Interés Comunitario como Cañón del Río Lobos, los Sabinares Sierra de Cabrejas y zonas de Especial Protección de Aves en el Cañón del Río Lobos.</p>
-          </div>
-          <div class="col-md-4">
-          <img class="featurette-image img-responsive" src="./img/Cañon del Rio Lobos.jpeg">
-          </div>
-          
-          <div class="col-md-8">
-          <h2 class="featurette-heading">Berlanga de Duero</h2>
-          <p class="lead">Es una villa y municipio de la provincia de Soria</p>
-          <p class="lead">Además de calles aportaladas, con edificios de adobe y entramado de madera, sostenidos por recios postes y algunas casas que conservan los blasones, cuenta con importantes elementos patrimoniales.</p>
-		  <p class="lead">La Colegiata de Santa María del Mercado. Declarada Bien de Interés Cultural en la categoría de Monumento. Destacan los retablos y tallas de las capillas de Santa Ana y de los Coria. El Altar Mayor está presidido por la talla de Nuestra Señora del Mercado. La Fuente de Berlanga. El Castillo. Las Picota de Berlanga. El Palacio de los Marqueses de Berlanga Declarado Bien de Interés Cultural en la categoría de Monumento. La Picota. El Convento de Paredes Albas. Y el Puente medieval, medio abandonado en el Arrabal de la Estación, también abandonada.</p>
-          </div>
-          <div class="col-md-4">
-          <img class="featurette-image img-responsive" src="./img/Berlanga_de_Duero,_Castillo.jpg">
-          </div>
-          
-          <div class="col-md-8">
-          <h2 class="featurette-heading">Calatañazor</h2>
-          <p class="lead">Es una localidad y municipio de la provincia de Soria</p>
-          <p class="lead">La estructura urbana es muy simple, una empinada calle constituye el eje del poblado en cuyo extremo superior se ubica la plaza mayor, auténtico ágora que acoge en su centro el emblemático "rollo" bajomedieval y que reúne en su entorno las construcciones más representativas del gobierno de ayer y de hoy: el Castillo y el Ayuntamiento. Todo en Calatañazor tiene sabor tradicional de calles empedradas con canto rodado, casas con desplomadas paredes de tapial de barro y paja o tosca mampostería de piedra, estructura y trabazón confiada a irregulares rollizos de enebro, puertas protegidas por postigos de media altura, cubiertas de teja sobre las que se alzan las genuinas chimeneas cónicas pinariegas.</p>
-          </div>
-          <div class="col-md-4">
-          <img class="featurette-image img-responsive" src="./img/Calatañazor-Calle.jpg">
-          </div>
-		  <div class="col-md-12">
-          <p class="lead">Cuenta además con abundantes restos de un señorial castillo, con dos iglesias —una de ellas románica— y con una tercera muy arruinada pero que todavía deja entrever su románica hechura. Tantos méritos le valieron a la villa de Calatañazor la declaración de Conjunto Histórico-Artístico Nacional.</p>
-          <p class="lead">En su término cuenta con las Riberas del Río Duero y afluentes y las Sabinares Sierra de Cabrejas.</p>
-          </div>
-          <div class="col-md-8">
-          <h2 class="featurette-heading">Sepúlveda</h2>
-          <p class="lead">Es una villa y municipio de la provincia de Segovia.</p>
-          <p class="lead">En su término se encuentra parte del Parque Natural de las Hoces del Río Duratón y en la localidad está el Centro de Interpretación de las Hoces del Duratón (sito en la Iglesia de Santiago) en el que se puede ver todo lo relacionado con el Parque Natural y con Sepúlveda.</p>
-          </div>
-          <div class="col-md-4">
-          <img class="featurette-image img-responsive" src="./img/Convento_de_la_Hoz.jpg">
-          </div>
-		  <div class="col-md-12">
-          <p class="lead">Entre su patrimonio cuenta con Arte Rupestre, en el Castrillo de Sepúlveda, Sepúlveda y Villaseca. La Iglesia de la Virgen de la Peña,lLa Iglesia de San Salvador, la Iglesia de San Justo, la Iglesia de San Millán: Su deplorable estado de conservación es el motivo por el que este monumento ha sido incluido en la Lista roja de patrimonio en peligro de la asociación para la defensa del patrimonio Hispania Nostra, junto co el Castillo de Fernán González. Y todo el Conjunto Histórico de la villa de Sepúlveda.</p>
-          <p class="lead">El parque natural de las Hoces del Río Duratón es un paraje protegido que comprende el entorno de las hoces que este río tiene en su tramo medio. Fue declarado Parque natural, por la importancia de sus ecosistemas naturales y valores paisajísticos. La colonia de buitres leonados establecida en el área protegida está considerada como la mayor de Europa. Junto a la riqueza natural que guarda hay un importante patrimonio cultural que hacen del mismo un destino turístico y de ocio importante. Destaca la ermita de San Frutos y el monasterio de Nuestra Señora de la Hoz.</p>
-          </div>
-          
-          <div class="col-md-12">
-          <h2 class="featurette-heading">Otros lugares de interés:</h2>
-          <p class="lead">El Sito Paleontológico, Cerro Pelado, en Medinaceli. Medinaceli. Casillas de Berlanga. Muriel de la Fuente. Almazán. La Fuentona. La Laguna Negra. El Espacio Natural de Sierra de Urbión. Y la Propia Soria.</p>
-          </div>
-          </div>
-          
-      <hr class="featurette-divider" id="Precios">
-
-      <div class="row featurette">
-        <div class="col-md-12">
-          <h2 class="featurette-heading">Precios.</h2>
-          <div class="bs-example" data-example-id="hoverable-table">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Fin de semana</th>
-                  <th>3 noches</th>
-                  <th>4 noches</th>
-                  <th>5 noches</th>
-                  <th>6 noches</th>
-                  <th>1 semana</th>
-                  <th>2 semanas</th>
-                  <th>1 mes</th>
-                  </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Precio</th>
-                  <td>320€</td>
-                  <td>420€</td>
-                  <td>500€</td>
-                  <td>600€</td>
-                  <td>700€</td>
-                  <td>800€</td>
-                  <td>1000€</td>
-                  <td>1300€</td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="row featurette">
-        <div class="col-md-12">
-          <p class="lead">- Se precisa depósito anticipado del 30% del total, por transferecia, para la reserva.</p>
-          <p class="lead">- La reserva será confirmada a la recepción del comprobante del depósito.</p>
-          <p class="lead">- Para la cancelación o cambio de reseva, rogamos que se avise lo antes posible. El depósito, se devolverá integramente, en el caso de hacer la cancelación de la reserva antes de 15 días de la fecha de entrada.</p>
-          <p class="lead">- Se admiten animales y su estancia es gratuita.</p>
-          <p class="lead">- La casa está disponible, a partir de las 16:00h del día de llegada y deberá quedar libre a las 16:00h del día de salida.</p>
-          <p class="lead">- Se ruega no subir las mascotas a las habitaciones. (Ver "<a href="#Mascotas">Mascotas</a>").</p>
-          <p class="lead">- Por favor, por respeto a todos los usuarios, se ruega no fumar en el interior de la vivienda.</p>
-        </div>
-      
-           </div>
-        </div>
-
-          
-      </div>
-      </div>
-
-      <hr class="featurette-divider" id="Llegar">
-
-      <div class="row featurette">
-        <div class="col-md-4">
-          <h2 class="featurette-heading">Cómo llegar.</h2>
-          <p class="lead">Calle Escuela, 30. Torraño, Soria, Castilla y León.</p>
-          <p class="lead">Ctrra N110. Salida 93.</p>
-          <p>
-          	<div id="cont_3c2d290a75cbc70213a218ace079680d">
-              <span id="h_3c2d290a75cbc70213a218ace079680d"><a id="a_3c2d290a75cbc70213a218ace079680d" href="http://www.tiempo.com/torrano_soria-l89282.htm" target="_blank" rel="nofollow" style="color:#808080;font-family:Helvetica;font-size:14px;">El Tiempo en Torra&ntilde;o</a></span>
-              <script type="text/javascript" async src="http://www.tiempo.com/wid_loader/3c2d290a75cbc70213a218ace079680d"></script>
             </div>
-         </p>
+            <div class="col-lg-6">
+                <img src="./img/Fachada noche (1).jpg" class="img-fluid rounded-4 shadow-lg" alt="Fachada de la casa">
+            </div>
         </div>
-        <div class="col-md-8">
-          <p><br></p>
-          <div class="Flexible-container">
-            <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/place?q=calle%20escuela%2030%20torra%C3%B1o&key=AIzaSyBZAwsxCDUeqGlHURBGnwCRKKkh6UqPqX4&maptype=satellite"></iframe>
-          <p class="lead">Ubicación: 41°25'51''N - 3°19'31''O  Latitud: 1032 m.s.n.m.</p>
-          <p>
-          </div>
+    </section>
+
+    <section id="galeria" class="bg-light section-padding">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Galería de Imágenes</h2>
+            <div class="row g-3">
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Fachada dia (3).jpg" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/fachada2.jpg" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Entrada dia (4).JPG" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Salon dia (1).JPG" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Salon dia (4).JPG" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/salon3.jpg" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/patio3.jpg" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/patio1.jpg" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Cocina dia (2).JPG" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Cocina dia (4).JPG" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Baño grande (2).JPG" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Escalera dia (2).JPG" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Pasillo dia (2).JPG" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Morada dia (1).JPG" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Morada dia (4).JPG" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Baño blanco.JPG" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Lunas noche.jpg" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Lunas dia (3).JPG" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Marron dia (4).JPG" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Marron noche (1).jpg" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Pasillo dia (3).JPG" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Baño azul (1).JPG" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Azul dia (1).JPG" class="gallery-img shadow-sm"></div>
+                <div class="col-6 col-md-3 col-lg-2"><img src="./img/Azul dia (3).JPG" class="gallery-img shadow-sm"></div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <hr class="featurette-divider" id="Contacto">
-
-      <div class="row featurette">
-        <!--contacto-->
-        <div class="col-md-12">
-          <h2 class="featurette-heading">Contacto.</h2>
-          <div class="bs-example" data-example-id="hoverable-table">
-            <table class="table table-hover">
-              <tbody>
-                <tr>
-                  <th scope="row">Email</th>
-                  <td><a href="mailto:lamoradadesoria@gmail.com">lamoradadesoria@gmail.com</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">Teléfono</th>
-                  <td>+34 687 96 61 31 - Coral</td>
-                </tr>
-                <tr>
-                  <th scope="row">Teléfono</th>
-                  <td>+34 677 45 07 29 - Alfredo</td>
-                </tr>
-				</div>
-                </tbody>
-            </table>
-           </div>
-	<hr class="featurette-divider" id="Aviso legal">
-
-      <div class="row featurette">
-        <div class="col-md-12">
-          <h2 class="featurette-heading">Aviso legal.</h2>
-	  <p class="lead">Datos relativos a la autorización administrativa previa para el ejercicio de la actividad.<p>
-          <p class="lead">Establecimiento autorizado por el Consejería de Turismo de la Junta de Castilla y León con Nº oficial 42/000450.<p>
-          <p class="lead">Este sitio web ha sido creado por Casa Rural LA MORADA DE SORIA con carácter informativo y para uso personal de los usuarios. A través de este Aviso legal, se pretende regular el acceso y uso de este sitio web, así como la relación entre el sitio web y sus usuarios. Accediendo a este sitio web se aceptan los siguientes términos y condiciones:<p> 
-          <p class="lead">El acceso a este sitio web es responsabilidad exclusiva de los usuarios.<p>
-	  <p class="lead">El simple acceso a este sitio web no supone entablar ningún tipo de relación comercial entre LA MORADA DE SORIA CASA RURAL y el usuario.<p>
-	  <p class="lead">El acceso y la navegación en este sitio web supone aceptar y conocer las advertencias legales, condiciones y términos de uso contenidas en ella.<p>
-	  <p class="lead">El titular del sitio web puede ofrecer servicios o productos que podrán encontrarse sometidos a unas condiciones particulares propias que, según los casos, sustituyan, completen y/o modifiquen las presentes condiciones, y sobre las cuales se informará al usuario en cada caso concreto. <p>
-	  <p class="lead">Política de Protección de Datos
-	  <p class="lead">LA MORADA DE SORIA, con dirección de correo electrónico de contacto lamoradadesoria@gmail.com, informa a sus usuarios y clientes (en adelante, los "Usuarios" y/o "Clientes") acerca de su política de protección de datos de carácter personal (en adelante, "Datos Personales").<p>
-	  <p class="lead">Los Usuarios deciden libre y voluntariamente si desean facilitar a LA MORADA DE SORIA CASA RURAL los Datos Personales que se les pueda solicitar con ocasión de sus relaciones comerciales.<p>
-	  <p class="lead">Los Clientes falicitarán sus datos personales a LA MORADA DE SORIA CASA RURAL a efectos administativos (facturación) y en cumplimiento de la Normativa marcada por Ministerio de Interior, en materia de notificación de datos personales. La finalidad es la de llevar a cabo la gestión administrativa con sus Clientes y en cumplimiento de la Normativa del Ministerio del Interior, y no pueden ser usados para enviar comunicaciones comerciales e información de eventos o campañas de promoción a sus clientes.
-	  Los datos no serán cedidos a terceras empresas, sólamente a la Dirección General de la Guardia Civil, dependiente del Ministerio del Interior.<p>
-          <p class="lead">LA MORADA DE SORIA CASA RURAL ha adoptado los niveles de seguridad de protección de los Datos Personales legalmente requeridos, y dichos niveles estarán acordes con la evolución del estado de la técnica y la legislación vigente.<p>
-          <p class="lead">LA MORADA DE SORIA CASA RURAL pone a disposición de los Usuarios de forma clara, el contenido de este aviso sobre la Política de Privacidad y puedan prestar su consentimiento a fin de que pueda conocer las inquietudes de sus Clientes y, con su colaboración, obtener mejoras en los servicios que presta.<p>
-          <p class="lead">Los Usuarios tienen reconocidos y podrán ejercitar los derechos de acceso, cancelación, rectificación y oposición, contactando con LA MORADA DE SORIA a través del correo electrónico lamoradadesoria@gmail.com.</p>
-             </div>
-               </div>
-  
-			<hr class="featurette-divider" id="COVID-19">
-
-      <div class="row featurette">
-        <div class="col-md-8">
-          <h2 class="featurette-heading">COVID-19.</h2>
-          <p class="lead">Protocolo de actuación frente al COVID-19.<p>
-          <p>
-          <p class="lead">Protocolo de limpieza previa y posterior a la salida del viajero:<p>
-          <p class="lead">Se airear bien las estancias.<p> 
-          <p class="lead">Se realiza una limpieza y desinfección de toda la casa, prestando especial atención a las superficies de contacto frecuentes.<p>
-          <p class="lead">Se utilizan desinfectantes con actividad virucida autorizados y registrados por el Ministerio de Sanidad y se realizan estas tareas con EPIs que se desechan a continuación.<p>
-          <p class="lead">La ropa de cama y de baño se lava y desinfecta en máquina lavadora a una temperatura de 60º centígrados.<p>
-	     
-        <div class="col-md-4">
-            <img class="featurette-image img-responsive" src="./img/sello final 2.jpg">
-             </div>
-	<div class="col-md-12">
-          <p>
-          <p class="lead">Protocolo con los viajeros.<p>
-          <p class="lead">Se realizará una desinfección de las manos después de intercambiar objetos con los viajeros como por ejemplo llaves o dinero.<p>
-          <p>
-          <p class="lead">Recomendaciones.<p>
-          <p class="lead">Lavarse las manos frecuentemente y durante 40-60 segundos, usando jabón.<p>
-          <p class="lead">Mantener una distancia social de al menos 2 metros.<p>
-          <p class="lead">Al toser o estornudar, cubrirse la boca y la nariz con un pañuelo de papel o la parte interior del codo.<p>
-          <p class="lead">Evitar tocarse los ojos, la nariz y la boca.<p>
-          <p class="lead">En caso de experimentar síntomas de enfermedad (tos, sensación de falta de aire, etc) se debe llamar a los servicios sanitarios y atender a sus instrucciones. Mientras tanto, extremar las medidas de higiene, mantener la distancia social con otras personas, usar mascarilla. E INFORMAR AL PROPIETARIO DEL ALOJAMIENTO PARA QUE ESTE PUEDA TOMAR LAS MEDIAS OPORTUNAS</p>
-          </div>
-      </div>         
-
+    <section id="mascotas" class="container section-padding">
+        <div class="row align-items-center">
+            <div class="col-md-4 text-center mb-4">
+                <img src="./img/Animales.jpg" class="img-fluid rounded-circle shadow" style="width: 280px; height: 280px; object-fit: cover;" alt="Mascotas">
+            </div>
+            <div class="col-md-8">
+                <div class="mascotas-box">
+                    <h3 class="text-success mb-3">Tu mascota es bienvenida</h3>
+                    <p class="small text-muted">Aceptamos animales bajo normas de convivencia básica:</p>
+                    <ul class="row list-unstyled">
+                        <div class="col-md-6 small">
+                            <li>✅ Identificación: Cartilla y chip al día.</li>
+                            <li>🏠 Higiene: No subir a mobiliario ni camas.</li>
+                            <li>🛌 Traer su propia manta o colchoneta.</li>
+                            <li>🚿 No usar las toallas del baño de la casa.</li>
+                        </div>
+                        <div class="col-md-6 small">
+                            <li>🍽️ Alimentarlos en el patio o baños.</li>
+                            <li>⚠️ No dejarlos solos en la vivienda.</li>
+                            <li>🌿 Respetar alfombras y zonas delicadas.</li>
+                            <li>❤️ Trato con el respeto y dignidad que merecen.</li>
+                        </div>
+                    </ul>
+                    <p class="mt-2 fw-bold text-success">¡Estancia gratuita para ellos!</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-      </div>
+    <section id="turismo" class="bg-light section-padding">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Torraño y su entorno</h2>
+            <div class="row g-4">
+                <div class="col-md-4"><div class="card card-turismo">
+                    <img src="./img/IglesiaDeNuestraSeñoraDelRiver-SEdG.jpg" class="card-img-top">
+                    <div class="card-body"><h5>San Esteban de Gormaz</h5><p class="small text-muted">Conjunto Histórico con iglesias románicas y ruta del vino.</p></div>
+                </div></div>
+                <div class="col-md-4"><div class="card card-turismo">
+                    <img src="./img/Catedral del Burgo de Osma.jpg" class="card-img-top">
+                    <div class="card-body"><h5>El Burgo de Osma</h5><p class="small text-muted">Ciudad monumental con catedral gótica y murallas medievales.</p></div>
+                </div></div>
+                <div class="col-md-4"><div class="card card-turismo">
+                    <img src="./img/Cañon del Rio Lobos.jpeg" class="card-img-top">
+                    <div class="card-body"><h5>Cañón del Río Lobos</h5><p class="small text-muted">Parque Natural espectacular para el senderismo y avistamiento de aves.</p></div>
+                </div></div>
+                <div class="col-md-4"><div class="card card-turismo">
+                    <img src="./img/Ayllón.JPG" class="card-img-top">
+                    <div class="card-body"><h5>Ayllón</h5><p class="small text-muted">Villa segoviana de arquitectura roja y gran patrimonio histórico.</p></div>
+                </div></div>
+                <div class="col-md-4"><div class="card card-turismo">
+                    <img src="./img/Puerta de la villa Maderuelo.jpg" class="card-img-top">
+                    <div class="card-body"><h5>Maderuelo</h5><p class="small text-muted">Villa medieval amurallada sobre el embalse de Linares.</p></div>
+                </div></div>
+                <div class="col-md-4"><div class="card card-turismo">
+                    <img src="./img/Calatañazor-Calle.jpg" class="card-img-top">
+                    <div class="card-body"><h5>Calatañazor</h5><p class="small text-muted">Pueblo con sabor tradicional de calles empedradas y casas de tapial.</p></div>
+                </div></div>
+            </div>
+            <div class="mt-5 p-4 bg-white rounded shadow-sm text-center">
+                <p class="mb-0 text-muted small"><strong>También cerca:</strong> Castillo de Gormaz, Ligos, Montejo de Tiermes, Ucero, Berlanga de Duero, Sepúlveda, Medinaceli, La Fuentona y La Laguna Negra.</p>
+            </div>
+        </div>
+    </section>
 
-      <!-- /END THE FEATURETTES -->
+    <section id="precios" class="container section-padding text-center">
+        <h2 class="mb-5 fw-bold">Tarifas, fechas y reservas</h2>
+		<p><a href="https://www.escapadarural.com/casa-rural/soria/la-morada-de-soria/precios">Consultar disponibilidad y precios</a></p>
+        <p class="text-muted mt-3 small">* Depósito del 30% para reserva. Entrada y salida a las 16:00h.</p>
+    </section>
 
+    <section id="contacto" class="contacto-dark section-padding">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <h2 class="display-6 fw-bold mb-4">Hablemos</h2>
+                    <p class="mb-4">📍 Calle Escuela, 30. Torraño, Soria (Castilla y León).</p>
+                    <p class="mb-2">📞 +34 687 96 61 31 (Coral)</p>
+                    <p class="mb-4">📞 +34 677 45 07 29 (Alfredo)</p>
+                    <p class="mb-5">📧 <a href="mailto:lamoradadesoria@gmail.com" class="text-white text-decoration-none">lamoradadesoria@gmail.com</a></p>
+                    
+                    <div class="social-icons">
+                        <a href="https://facebook.com/LaMoradadeSoria"><img src="./img/icons/facebook.png" alt="FB"></a>
+                        <a href="https://instagram.com/lamoradadesoria/"><img src="./img/icons/instagram.png" alt="IG"></a>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.2232990868197!2d-3.3278304118855724!3d41.431664488481886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd446e6244ff2d37%3A0x91c910c128618421!2s42342%20Torra%C3%B1o%2C%20Soria!5e1!3m2!1ses!2ses!4v1778425799119!5m2!1ses!2ses" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <!-- FOOTER -->
-      <footer>
-		<p>
-        	<tr scope="row">
-				<td>
-                	<a href="https://www.facebook.com/LaMoradadeSoria"><img src="./img/icons/facebook.png" style="width:42px;height:42px;border:0"></a>
-                </td>
-            </tr>
-            <tr scope="row">
-				<td>
-                	<a href="https://twitter.com/LaMoradaDeSoria"><img src="./img/icons/twitter.png" style="width:42px;height:42px;border:0"></a>
-                </td>
-            </tr>
-            <tr scope="row">
-				<td>
-                	<a href="https://instagram.com/lamoradadesoria/"><img src="./img/icons/instagram.png" style="width:42px;height:42px;border:0"></a>
-                </td>
-            </tr>
+    <footer class="bg-dark text-center py-4 border-top border-secondary">
+        <div class="container text-muted small">
+            <p>© 2024 Casa Rural La Morada de Soria | Nº Oficial: 42/000450</p>
+        </div>
+    </footer>
 
-      </footer>
-
-    </div><!-- /.container -->
-
-
-  </body>
-
-  <script>
-    $(document).ready(function(){        
-      $('li img').on('click',function(){
-        var src = $(this).attr('src');
-        var img = '<img src="' + src + '" class="img-responsive"/>';
-        //start of new code new code
-        var index = $(this).parent('li').index();   
-        var html = '';
-        html += img;                
-        html += '<div style="height:25px;clear:both;display:block;">';
-        html += '<a class="controls next" href="'+ (index+2) + '">siguiente &raquo;</a>';
-        html += '<a class="controls previous" href="' + (index) + '">&laquo; anterior</a>';
-        html += '</div>';
-        $('#myModal').modal();
-        $('#myModal').on('shown.bs.modal', function(){
-          $('#myModal .modal-body').html(html);
-          //new code
-          $('a.controls').trigger('click');
-        })
-        $('#myModal').on('hidden.bs.modal', function(){
-            $('#myModal .modal-body').html('');
-        });
-      });
-    })
-        
-    //new code
-    $(document).on('click', 'a.controls', function(){
-      var index = $(this).attr('href');
-      var src = $('ul.row li:nth-child('+ index +') img').attr('src');             
-      
-      $('.modal-body img').attr('src', src);
-      
-      var newPrevIndex = parseInt(index) - 1; 
-      var newNextIndex = parseInt(newPrevIndex) + 2; 
-      
-      if($(this).hasClass('previous')){               
-        $(this).attr('href', newPrevIndex); 
-        $('a.next').attr('href', newNextIndex);
-      }else{
-        $(this).attr('href', newNextIndex); 
-        $('a.previous').attr('href', newPrevIndex);
-      }
-        
-      var total = $('ul.row li').length + 1; 
-      //hide next button
-      if(total === newNextIndex){
-        $('a.next').hide();
-      }else{
-        $('a.next').show()
-      }            
-      //hide previous button
-      if(newPrevIndex === 0){
-        $('a.previous').hide();
-      }else{
-        $('a.previous').show()
-      }
-            
-      return false;
-    });
-
-  </script>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
